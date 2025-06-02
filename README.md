@@ -125,8 +125,8 @@ exit 0
 
 ![用法](https://github.com/Marspacecraft/7zAutomator/blob/main/pic3.png)   
 
-* 如果要配置压缩效率添加```-mt```参数
-  ** ```/opt/homebrew/bin/7z a -t7z -mx9 "$tmp_7z" "$item" > /dev/null```高压缩率，低速度
+* 如果要配置压缩效率添加```-mx```参数     
+  ** ```/opt/homebrew/bin/7z a -t7z -mx9 "$tmp_7z" "$item" > /dev/null```高压缩率，低速度         
   ** ```/opt/homebrew/bin/7z a -t7z -mx0 "$tmp_7z" "$item" > /dev/null```高速度，低压缩率
 ```shell
 # 设置错误处理：任何命令失败立即退出
