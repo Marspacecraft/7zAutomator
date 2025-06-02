@@ -5,18 +5,24 @@
 
  ## 自动操作设置  
 
-
-快速操作->实用工具->运行Shell脚本
+* ```brew install p7zip```安装7z
+* 快速操作->实用工具->运行Shell脚本
  
- ![用法](https://github.com/Marspacecraft/7zAutomator/blob/main/pic.png)   
+![用法](https://github.com/Marspacecraft/7zAutomator/blob/main/pic.png)   
 
 
 
 ## 脚本内容  
+* 成功播放```afplay /System/Library/Sounds/Glass.aiff```(使用iterm试听)
+* 失败播放```afplay /System/Library/Sounds/Ping.aiff```(使用iterm试听)或弹出运行异常窗口
+* 如果运行不成功尝试修改```/opt/homebrew/bin/7z```路径为自己环境的路径
+  
+
  ### 7z解压脚本  
 
-解压缩，如果不支持的格式会出现告警
- ![用法](https://github.com/Marspacecraft/7zAutomator/blob/main/pic1.png)   
+* 解压缩，如果不支持的格式会出现告警   
+
+![用法](https://github.com/Marspacecraft/7zAutomator/blob/main/pic1.png)   
 
 ```shell
 # 设置错误处理：任何命令失败立即退出
@@ -115,8 +121,9 @@ exit 0
 
 ### 7z压缩脚本  
 
-压缩，如果出现重名会告警并重新命名
- ![用法](https://github.com/Marspacecraft/7zAutomator/blob/main/pic3.png)   
+* 压缩，如果出现重名会告警并重新命名   
+
+![用法](https://github.com/Marspacecraft/7zAutomator/blob/main/pic3.png)   
 
 ```shell
 # 设置错误处理：任何命令失败立即退出
