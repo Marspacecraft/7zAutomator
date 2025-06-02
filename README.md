@@ -12,10 +12,11 @@
 
 
 
-
+## 脚本内容  
  ### 7z解压脚本  
 
-
+解压缩，如果不支持的格式会出现告警
+ ![用法](https://github.com/Marspacecraft/7zAutomator/blob/main/pic1.png)   
 
 ```shell
 # 设置错误处理：任何命令失败立即退出
@@ -110,4 +111,57 @@ done
 # 完成提示
 afplay /System/Library/Sounds/Glass.aiff
 exit 0
+```
+
+### 7z压缩脚本  
+
+压缩，如果出现重名会告警并重新命名
+ ![用法](https://github.com/Marspacecraft/7zAutomator/blob/main/pic3.png)   
+
+```shell
+# 设置错误处理：任何命令失败立即退出
+set -e
+
+# 处理每个选中项目
+for item in "$@"; do
+    # 获取基础名称和父路径
+    name=$(basename "$item")
+    parent_dir=$(dirname "$item")
+    
+    # 创建临时目录
+    tmp_dir=$(mktemp -d)
+    tmp_7z="${tmp_dir}/${name}.tmp.7z"
+    
+    # 压缩到临时文件
+    /opt/homebrew/bin/7z a -t7z "$tmp_7z" "$item" > /dev/null
+    
+    # 确定最终文件名（避免覆盖）
+    base_name="${name}"
+    counter=1
+    final_7z="${parent_dir}/${base_name}.7z"
+    
+    # 检查文件是否存在并生成新名称
+    while [[ -e "${final_7z}" ]]; do
+        if [[ $counter -eq 1 ]]; then
+            final_7z="${parent_dir}/${base_name} ${counter}.7z"
+        else
+            final_7z="${parent_dir}/${base_name} ${counter}.7z"
+        fi
+        ((counter++))
+    done
+	
+	# 重命名告警
+	if [[ $counter -ne 1 ]]; then
+        osascript -e "display alert \"存在同名文件\" message \"重命名为${final_7z} \""
+	fi
+    
+    # 移动到最终位置
+    mv -n "$tmp_7z" "$final_7z"
+    
+    # 清理临时目录
+    rm -rf "$tmp_dir"
+done
+
+# 完成提示
+afplay /System/Library/Sounds/Glass.aiff
 ```
