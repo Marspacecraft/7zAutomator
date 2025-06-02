@@ -8,16 +8,15 @@
 
 快速操作->实用工具->运行Shell脚本
  
- ![用法](https:github.com/Marspacecraft/7zAutomator/blob/main/pic.png)   
+ ![用法](https://github.com/Marspacecraft/7zAutomator/blob/main/pic.png)   
 
 
 
 
  ### 7z解压脚本  
 
- ‘’‘
- 
-# 设置错误处理：任何命令失败立即退出
+ ‘’‘console
+ # 设置错误处理：任何命令失败立即退出
 set -e
 
 # 支持的压缩格式列表（7z支持的解压格式）
