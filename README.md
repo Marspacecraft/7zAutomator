@@ -15,8 +15,10 @@
 
  ### 7z解压脚本  
 
- ···console
- # 设置错误处理：任何命令失败立即退出
+
+
+```shell
+# 设置错误处理：任何命令失败立即退出
 set -e
 
 # 支持的压缩格式列表（7z支持的解压格式）
@@ -108,4 +110,4 @@ done
 # 完成提示
 afplay /System/Library/Sounds/Glass.aiff
 exit 0
-···
+```
