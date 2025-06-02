@@ -15,7 +15,7 @@
 
  ### 7z解压脚本  
 
- ‘’‘console
+ ···console
  # 设置错误处理：任何命令失败立即退出
 set -e
 
@@ -108,4 +108,4 @@ done
 # 完成提示
 afplay /System/Library/Sounds/Glass.aiff
 exit 0
- ’‘’
+···
